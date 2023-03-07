@@ -1,0 +1,26 @@
+{
+  "name": "nodes",
+  "version": "1.0.0",
+  "description": "this repository contained code created from command line that can generate team profile",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+   "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Saadu10002/file-generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Saadu10002/file-generator/issues"
+  },
+  "homepage": "https://github.com/Saadu10002/file-generator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.2",
+    "jest": "^29.5.0"
+  }
+}
