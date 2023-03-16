@@ -112,7 +112,39 @@ function addEngineer() {
 
 }
 
+function addIntern() {
+    inquirer.prompt([
+        {
+            type: `input`,
+            name: `internName`,
+            message: `what is the name of intern?`
+        },
 
+        {
+            type: `input`,
+            name: `internId`,
+            message: `what is the id of intern?`
+        },
+
+        {
+            type: `input`,
+            name: `internEmail`,
+            message: `what is the email address of intern?`
+        },
+
+        {
+            type: `input`,
+            name: `internSchool`,
+            message: `what is the name of intern's school?`
+        }
+    ]).then(responses => {
+        const intern = new Intern(responses.internName, responses.internId, responses.internEmail, responses.internSchool);
+        teamMembers.push(intern);
+        idList.push(responses.engineerId);
+
+        createIntern();
+    });
+}
 
 
 
