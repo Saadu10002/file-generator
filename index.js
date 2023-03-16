@@ -68,9 +68,9 @@ function createManager() {
             message: `what is the office's number of the manager?`
         }
     ]).then(managerResponse => {
-        const manager = new manager(managerResponse.managerName, managerResponse.managerId, managerResponse.managerEmail, managerResponse.managerOfficeNumber);
+        const manager = new manager(managerResponses.managerName, managerResponses.managerId, managerResponses.managerEmail, managerResponses.managerOfficeNumber);
         teamMembers.push(manager);
-        idList.push(managerResponse.managerId);
+        idList.push(managerResponses.managerId);
     
     })
     createManager();
