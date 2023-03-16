@@ -67,13 +67,53 @@ function createManager() {
             name: `managerOfficeNumber`,
             message: `what is the office's number of the manager?`
         }
-    ]).then(managerResponse => {
-        const manager = new manager(managerResponses.managerName, managerResponses.managerId, managerResponses.managerEmail, managerResponses.managerOfficeNumber);
+    ]).then(responses => {
+        const manager = new Manager(responses.managerName, responses.managerId, responses.managerEmail, responses.managerOfficeNumber);
         teamMembers.push(manager);
-        idList.push(managerResponses.managerId);
+        idList.push(responses.managerId);
+        createManager();
+    });
     
-    })
-    createManager();
 }
+
+function addEngineer() {
+    inquirer.prompt([
+        {
+            type: `input`,
+            name: `engineerName`,
+            message: `what is the name of engineer?`
+        },
+
+        {
+            type: `input`,
+            name: `engineerId`,
+            message: `what is the id of the engineer?`,
+
+        },
+        {
+            type: `input`,
+            name: `engineerEmail`,
+            message: `what is the email address of engineer?`
+        },
+
+        {
+            type: `input`,
+            name: `engineerGithub`,
+            message: `what is the engineer's github username?`
+        }
+
+    ]).then(responses => {
+        const engineer = new Engineer(responses.engineerName, responses.engineerId, responses.engineerEmail, responses.engineergithub);
+        teamMembers.push(engineer);
+        idList.push(responses.engineerId);
+
+        createEngineer();
+    });
+
+}
+
+
+
+
 
 startApp();
