@@ -16,12 +16,20 @@ const render = require("./src/page-template.js");
 const teamMembers = []
 //empty array to store team member IDS
 const idList = []
+const startApp = () =>{
+    function buildTeam() {
+        if(!fs.existsSync (OUTPUT_DIR)) {
+            fs.mkdirSync(OUTPUT_DIR)
+        }
+
+        fs.writeFile(outputPath, render(teamMembers), `utf-8`);
+    }
+}
 
 
-
-function startApp () {
+// function startApp () {
     //creating options for the users
-    function createTeam () {
+    function createTeam  ()  {
         inquirer.prompt([{
             type:`list`,
             name: `choice`,
@@ -39,7 +47,7 @@ function startApp () {
             }
         })
     }
-}
+// }
 //creating manager info
 function createManager() {
 
@@ -75,7 +83,7 @@ function createManager() {
     });
     
 }
-
+//creating engineer info
 function addEngineer() {
     inquirer.prompt([
         {
@@ -111,7 +119,7 @@ function addEngineer() {
     });
 
 }
-
+//creating intern info
 function addIntern() {
     inquirer.prompt([
         {
