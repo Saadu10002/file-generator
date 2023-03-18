@@ -14,18 +14,22 @@ const render = require("./src/page-template.js");
 // TODO: Write Code to gather information about the development team members, and render the HTML file.
 //empty array to store team member object
 const teamMembers = []
-//empty array to store team member IDS
+// //empty array to store team member IDS
 const idList = []
 const startApp = () =>{
     function buildTeam() {
-        if(!fs.existsSync (OUTPUT_DIR)) {
+        if(!fs.existsSync(OUTPUT_DIR)) {
             fs.mkdirSync(OUTPUT_DIR)
         }
 
-        fs.writeFile(outputPath, render(teamMembers), `utf-8`);
+        fs.writeFileSync(outputPath, render(teamMembers), `utf-8`);
     }
 }
 
+
+
+
+// function startApp () {
 
 // function startApp () {
     //creating options for the users
@@ -43,30 +47,30 @@ const startApp = () =>{
             }else if(userInput.choice === `Intern`) {
                 addIntern();
             }else {
-                buildTeam();
+                createTeam();
             }
         })
     }
 // }
 //creating manager info
-function createManager() {
-
+// const createTeam = () =>{
+function addManager() {
     inquirer.prompt([
         {
             type: `input`,
             name: `managerName`,
-            message: `name of the team's manager?`,
+            message: `what is the manager's name?`,
         },
 
         { type: `input`,
         name: `managerId`,
-        message: `team's manager id`,
+        message: `what is the manager's id`,
 
         },
 
         { type: `input`,
         name: `managerEmail`,
-        message: `team's manager email?`,
+        message: `what is the manager's email address?`,
             
         },
 
@@ -77,12 +81,18 @@ function createManager() {
         }
     ]).then(responses => {
         const manager = new Manager(responses.managerName, responses.managerId, responses.managerEmail, responses.managerOfficeNumber);
+        console.log(manager);
         teamMembers.push(manager);
         idList.push(responses.managerId);
-        createManager();
+        
+      createTeam();
     });
-    
+    // createManager();
 }
+
+
+// createManager();
+
 //creating engineer info
 function addEngineer() {
     inquirer.prompt([
@@ -114,11 +124,15 @@ function addEngineer() {
         const engineer = new Engineer(responses.engineerName, responses.engineerId, responses.engineerEmail, responses.engineergithub);
         teamMembers.push(engineer);
         idList.push(responses.engineerId);
-
-        createEngineer();
+        console.log(engineer);
+        createTeam();
     });
 
 }
+
+
+// createEngineer();
+// createManager();
 //creating intern info
 function addIntern() {
     inquirer.prompt([
@@ -149,11 +163,11 @@ function addIntern() {
         const intern = new Intern(responses.internName, responses.internId, responses.internEmail, responses.internSchool);
         teamMembers.push(intern);
         idList.push(responses.engineerId);
-
-        createIntern();
+        console.log(intern);
+       createTeam();
     });
 }
 
 
-
 startApp();
+createTeam (); 
