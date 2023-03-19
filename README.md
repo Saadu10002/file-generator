@@ -17,8 +17,12 @@ After installing all the necessary, use node index.js to start,then questions wi
 Youtube video, instructor lesson, and TA.
 
 ## Contributor
-None
+N/A
 
+
+## Questions
+If got any questions, please reach out at GitHub: https://github.com/sfaaadu1000003
+Email:No@required
 
 
 
